@@ -25,7 +25,7 @@ const ImageGallery = ({ imageName }) => {
             return;
         }
 
-        setImages(null);
+        setImages([]);
         setQuery(imageName);
         setPage(1);
         loadImages(imageName, 1);
