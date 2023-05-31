@@ -13,6 +13,6 @@ const ImageGalleryErrorView = ({ message }) => {
 
 PropTypes.ImageGalleryErrorView = {
     message: PropTypes.string.isRequired,
-}
+};
 
 export default ImageGalleryErrorView;
