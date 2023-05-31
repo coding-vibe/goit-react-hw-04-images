@@ -14,7 +14,7 @@ const ImageGallery = ({ imageName }) => {
     const [totalImages, setTotalImages] = useState(0);
     const [error, setError] = useState(null);
     const [page, setPage] = useState(1);
-    const [query, setQuery] = useState('');
+    // const [query, setQuery] = useState('');
     const [showModal, setShowModal] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
     const [isLoadingMore, setIsLoadingMore] = useState(false);
@@ -26,7 +26,7 @@ const ImageGallery = ({ imageName }) => {
         }
 
         setImages(null);
-        setQuery(imageName);
+        // setQuery(imageName);
         setPage(1);
         loadImages(imageName, 1);
     }, [imageName]);
