@@ -5,11 +5,11 @@ import { ImSearch } from 'react-icons/im';
 import { Searchbar, SearchForm, SearchFormBtn, SearchFormInput } from './Searchbar.styled.js';
 
 const SearchBar = ({ onSubmit }) => {
-    const [imageName, setImageName] = useState('');
+    const [imageName, setImageName] = useState('')
 
     const handleNameChange = e => {
         setImageName(e.currentTarget.value.toLowerCase());
-    };
+    }
     
     const handleSubmit = e => {
         e.preventDefault();
@@ -19,7 +19,7 @@ const SearchBar = ({ onSubmit }) => {
         
         setImageName(imageName);
         onSubmit(imageName);
-    };
+    }
 
     return (
         <Searchbar className="searchbar">

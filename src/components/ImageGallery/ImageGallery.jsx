@@ -25,18 +25,18 @@ const ImageGallery = ({ imageName }) => {
             return;
         }
 
-        setImages([]);
-        setQuery(imageName);
-        setPage(1);
-        loadImages(imageName, 1);
-    }, [imageName]);
+        setImages([])
+        setQuery(imageName)
+        setPage(1)
+        loadImages(imageName, 1)
+    }, [imageName])
 
     useEffect(() => {
-        loadImages(imageName, page);
-    }, [imageName, page]);
+        loadImages(imageName, page)
+    }, [imageName, page])
 
     const loadImages = (imageName, page) => {
-        setStatus('pending');
+        setStatus('pending')
 
         imagesApi
             .fetchImages(imageName, page)
@@ -54,17 +54,17 @@ const ImageGallery = ({ imageName }) => {
                 setIsLoadingMore(false)
                 setStatus('rejected')
             })
-    };
+    }
 
     const loadMore = () => {
-        setPage(prevState => prevState + 1);
-    };
+        setPage(prevState => prevState + 1)
+    }
 
     const toggleModal = (largeImageURL, tags) => {
         setShowModal(prevState => !prevState)
         setSelectedImage(prevState => prevState ? null : { largeImageURL, tags }
-        );
-    };
+        )
+    }
     
     if (status === 'idle') {
         return <MessageIdle> Please, enter the name of the image </MessageIdle>;
@@ -116,7 +116,7 @@ const ImageGallery = ({ imageName }) => {
             </div>
         );
     }
-};
+}
 
 PropTypes.ImageGallery = {
     imageName: PropTypes.string.isRequired,
