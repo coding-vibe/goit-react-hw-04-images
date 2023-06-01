@@ -32,6 +32,10 @@ const ImageGallery = ({ imageName }) => {
     }, [imageName])
 
     useEffect(() => {
+        if (!imageName) {
+            return;
+        }
+        
         loadImages(imageName, page)
     }, [imageName, page])
 
