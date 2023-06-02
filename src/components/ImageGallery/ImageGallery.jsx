@@ -14,31 +14,22 @@ const ImageGallery = ({ imageName }) => {
     const [totalImages, setTotalImages] = useState(0);
     const [error, setError] = useState(null);
     const [page, setPage] = useState(1);
+    const [query, setQuery] = useState('');
     const [showModal, setShowModal] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
     const [isLoadingMore, setIsLoadingMore] = useState(false);
     const [status, setStatus] = useState('idle');
 
     useEffect(() => {
-        if (!imageName) {
+        if (imageName === '') {
             return;
         }
 
-        setImages([])
-        setPage(1)
-        loadImages(imageName, 1)
-    }, [imageName])
-
-    useEffect(() => {
-        if (!imageName) {
-            return;
-        }
-
-        loadImages(imageName, page)
-    }, [imageName, page])
-
-    const loadImages = (imageName, page) => {
         setStatus('pending')
+
+        setQuery(prevState => {
+            return prevState !== imageName ? (setImages(null), setPage(1), imageName) : prevState
+        })
 
         imagesApi
             .fetchImages(imageName, page)
@@ -56,7 +47,7 @@ const ImageGallery = ({ imageName }) => {
                 setIsLoadingMore(false)
                 setStatus('rejected')
             })
-    }
+    }, [imageName, page, query]);
 
     const loadMore = () => {
         setPage(prevState => prevState + 1)
